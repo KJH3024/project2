@@ -1,0 +1,42 @@
+from matplotlib import pyplot
+from pandas import read_csv, set_option
+from pandas.plotting import scatter_matrix
+import seaborn as sns
+from sklearn.preprocessing import StandardScaler
+from sklearn.model_selection import train_test_split, KFold, cross_val_score, GridSearchCV
+from sklearn.linear_model import LogisticRegression
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
+from sklearn.naive_bayes import GaussianNB
+from sklearn.svm import SVC
+from sklearn.neural_network import MLPClassifier
+from sklearn.pipeline import Pipeline
+from sklearn.ensemble import AdaBoostClassifier, GradientBoostingClassifier, RandomForestClassifier, ExtraTreesClassifier
+from sklearn.metrics import classification_report, confusion_matrix, accuracy_score
+from keras.models import Sequential
+from keras.layers import Dense
+from keras.wrappers.scikit_learn import KerasClassifier
+from keras.optimizers import SGD
+
+X_train, X_test, y_train, y_test = train_test_split(minmax_fit, df_target, test_size=0.2, random_state=7)
+
+num_folds = 10
+scoring = 'roc_auc'
+
+models = []
+models.append(('LR', LogisticRegression()))
+models.append(('LDA', LinearDiscriminantAnalysis()))
+models.append(('KNN', KNeighborsClassifier()))
+models.append(('CART', DecisionTreeClassifier()))
+models.append(('NB', GaussianNB()))
+models.append(('SVM', SVC()))
+#Neural Network
+models.append(('NN', MLPClassifier()))
+# #Ensable Models
+# Boosting methods
+models.append(('AB', AdaBoostClassifier()))
+models.append(('GBM', GradientBoostingClassifier()))
+# Bagging methods
+models.append(('RF', RandomForestClassifier()))
+models.append(('ET', ExtraTreesClassifier()))
